@@ -1,6 +1,6 @@
 {
-  "name": "vitepress-demo-plugin",
-  "version": "1.4.7",
+  "name": "@aplus-frontend/vp-demo-plugin",
+  "version": "1.0.0",
   "description": "A vitepress plugin to preview component and display code",
   "keywords": [
     "vitepress",
