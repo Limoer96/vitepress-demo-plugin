@@ -180,7 +180,8 @@ export const transformPreview = (
   const ssgValue = !!token.content.match(ssgRegex)?.[1];
   const htmlWriteWayValue =
     token.content.match(htmlWriteWayRegex)?.[1] || 'write';
-  const dirPath = demoDir || path.dirname(mdFile.realPath);
+  const mdPath = mdFile.realPath ?? mdFile.path;
+  const dirPath = demoDir || path.dirname(mdPath);
   const backgroundValue = token.content.match(backgroundRegex)?.[1];
 
   if (orderValue?.[1]) {
@@ -232,7 +233,7 @@ export const transformPreview = (
   const componentVuePath = componentProps.vue
     ? path
         .resolve(
-          demoDir || path.dirname(mdFile.realPath),
+          demoDir || path.dirname(mdPath),
           vuePathRegexValue?.[1] || '.'
         )
         .replace(/\\/g, '/')
@@ -240,7 +241,7 @@ export const transformPreview = (
   const componentHtmlPath = componentProps.html
     ? path
         .resolve(
-          demoDir || path.dirname(mdFile.realPath),
+          demoDir || path.dirname(mdPath),
           htmlPathRegexValue?.[1] || '.'
         )
         .replace(/\\/g, '/')
@@ -248,7 +249,7 @@ export const transformPreview = (
   const componentReactPath = componentProps.react
     ? path
         .resolve(
-          demoDir || path.dirname(mdFile.realPath),
+          demoDir || path.dirname(mdPath),
           reactPathRegexValue?.[1] || '.'
         )
         .replace(/\\/g, '/')
@@ -394,7 +395,7 @@ export const transformPreview = (
           const filePath = files[key as keyof typeof files][file].filename;
           if (filePath) {
             const absPath = path
-              .resolve(demoDir || path.dirname(mdFile.realPath), filePath || '.')
+              .resolve(demoDir || path.dirname(mdPath), filePath || '.')
               .replace(/\\/g, '/');
             if (fs.existsSync(absPath)) {
               const code = fs.readFileSync(absPath, 'utf-8');
