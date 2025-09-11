@@ -45,7 +45,7 @@ export default defineConfig({
 
 其对应的渲染效果如下：
 
-<demo vue="../demos/demo.vue" />
+<demo vue="../demos/demo.vue" background="#f2f5f7" />
 
 ## 展示 Html Demo
 
